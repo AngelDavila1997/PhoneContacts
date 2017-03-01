@@ -24,7 +24,7 @@ public class PhoneContacts {
         }
     }
     
-public static int menu(){
+public static int menu(){ //Muestra un menu para darle al usuario opciones
         int option;
         Scanner teclado = new Scanner(System.in); //Entrada de teclado para selección de opciones
        do{
@@ -41,11 +41,11 @@ public static int menu(){
                                            // seguira mostrando el menu
         return option;
     }   
-public static void options(int option, MobilePhone mobilePhone){  
+public static void options(int option, MobilePhone mobilePhone){  //Un switch que permite realizar diversas acciones
       String name;
       int number;
          switch(option){ //Seleccion multiple
-            case 1:
+            case 1://Añade contactos
                 System.out.println("***Add contact***");
                     name = solicitarDatosString("Contact name:");
                     number = solicitarDatosInt("Number:"); 
@@ -55,7 +55,7 @@ public static void options(int option, MobilePhone mobilePhone){
                     System.out.println("Contact already in list");
                          }
                 break;
-            case 2:
+            case 2://Actualiza contacto
                 System.out.println("***Update contact***");
                     name = solicitarDatosString("Contact name:");
                     number = solicitarDatosInt("Number:"); 
@@ -65,7 +65,7 @@ public static void options(int option, MobilePhone mobilePhone){
                     System.out.println("Contact does not exist");
                          }
                 break;
-            case 3:
+            case 3://Elimina contacto
                 System.out.println("***Delete contact***");
                     name = solicitarDatosString("Contact name:");
                    if (mobilePhone.removeContact(name)){
@@ -74,12 +74,12 @@ public static void options(int option, MobilePhone mobilePhone){
                     System.out.println("Contact does not exist");
                          }
                 break;
-            case 4:
+            case 4://Busca contacto
                 System.out.println("***Query contact***");
                     name = solicitarDatosString("Contact name:");
                     System.out.println(mobilePhone.queryContact(name));
                 break;
-            case 5:
+            case 5://Muestra la lista de contactos
                 System.out.println("***Contact list***");
                     mobilePhone.listContacts();
                 break;

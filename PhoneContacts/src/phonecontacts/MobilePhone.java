@@ -18,24 +18,16 @@ public class MobilePhone {
         this.contacts = new ArrayList<Contact>();//eL ArrayList tomara una posicion en memoria
     }
     
-    /*public Contact findContact(String name){
-         for(Contact temp : this.contacts){
-            if(temp.getName().equals(name)){
-                return temp;//Estoy regresando un apuntador a una posicion original del Array
-            }
-        }
-         return null;//Como no existe el bojeto lo que tengo que regresar es un null
-    }*/
     public int findContact(String name){
-         for(int i = 0; i<contacts.size(); i++){
-            if(contacts.get(i).getName().equals(name)){
+         for(int i = 0; i<contacts.size(); i++){//Mientras que i sea menor al tamaño del arraylist
+            if(contacts.get(i).getName().equals(name)){//Si el nombre del contacto en la posicion es igual al nombre
                 return i;//Estoy regresando un apuntador a una posicion original del Array
             }
         }
-         return -1;
+         return -1;//Regresa -1 (no hay posicion -1)
     }
-    public boolean addContact(Contact contact){
-        if(findContact(contact.getName()) == -1){
+    public boolean addContact(Contact contact){//Añade un contacto
+        if(findContact(contact.getName()) == -1){//Si regresa -1 se añade el contacto ya que no existe
             contacts.add(contact);
             return true;
         }
@@ -44,12 +36,12 @@ public class MobilePhone {
     public boolean addContact(String name, int number){
         return addContact(new Contact(name , number));
     }
-    public boolean removeContact(Contact contact){
-        int pos = findContact(contact.getName());
+    public boolean removeContact(Contact contact){//Remueve el contacto
+        int pos = findContact(contact.getName());//Recibe la posicion
         if(pos == -1){//No EXISTE
             return false;
         }
-        contacts.remove(pos);
+        contacts.remove(pos);//Se borra el conacto en la posicion .remove(index)
         return true;
     }
     public boolean removeContact(String name, int number){
@@ -58,11 +50,11 @@ public class MobilePhone {
     public boolean removeContact(String name){
         return removeContact(new Contact(name , 000));
     }
-    public boolean updateContact(Contact contact){
-        int pos = findContact(contact.getName());
+    public boolean updateContact(Contact contact){//Actualiza el contacto
+        int pos = findContact(contact.getName());//Obtiene la posicion
         if(pos == -1){//No EXISTE
             return false;
-        }
+        }//Establece nuevos valores
         contacts.get(pos).setName(contact.getName());
         contacts.get(pos).setNumber(contact.getNumber());
         return true;
@@ -75,12 +67,12 @@ public class MobilePhone {
             System.out.println(temp.toString());
         }
     }
-    public String queryContact(String name){
-        int pos = findContact(name);
-        if(pos == -1){
+    public String queryContact(String name){ //Busca el contacto
+        int pos = findContact(name);//Regresa una posicion
+        if(pos == -1){//No existe
             return "Contact not found";
         }else{
-            return contacts.get(pos).toString();
+            return contacts.get(pos).toString();//regresa un String con la informacion del contacto
         }
     }
 }
